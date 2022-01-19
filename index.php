@@ -1,33 +1,11 @@
 <?php 
 require_once 'config.php';
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portforio</title>
-    <link rel="stylesheet" href="<?php echo BASE_CSS_PASS ?>style.css">
-</head>
-<body>
-    <h1 class="color">
-        portforio
-    </h1>
-
-    <script src="<?php echo BASE_JS_PASS ?>"></script>
-</body>
-</html>
-
-
-<?php 
-
-try {
-
-} catch(exception) {
-
-} finally {
-
+if($uri === '/login') {
+    require_once 'php/views/login.php';
+} elseif($uri === '/register') {
+    require_once 'php/views/register.php';
+} elseif($uri === '/') {
+    require_once 'php/views/home.php';
 }
-?>
+
