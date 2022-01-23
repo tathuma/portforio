@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo BASE_CSS_PASS ?>style.css">
 </head>
 <body>
-    <h1 class="color">
+    <h1>
         HOME
     </h1>
 
