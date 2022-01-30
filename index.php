@@ -1,22 +1,37 @@
 <?php 
 require_once 'config.php';
-require_once SOURCE . 'db/db.login.php';
 
-require_once SOURCE . 'controllers/login.php';
 
-$path = BASE_PASS;
+// partsの読み込み
+require_once SOURCE . 'parts/header.php';
+
+$path = str_replace('/', '', $_SERVER['REQUEST_URI']);
+
+path($path);
+
+function path($path) {
+    if($path === '') {
+    $path = 'home';
+}
+
+$targetfile = SOURCE . "controllers/{$path}.php";
+
+if(!file_exists($targetfile)) {
+    /* ファイルが見つからなかったら404 */
+    require_once SOURCE . 'views/404.php';
+} else {
+require_once $targetfile;
+}
+}
+
+
+require_once SOURCE . 'parts/footer.php';
+
 
 $method = $_SERVER['REQUEST_METHOD'];
 echo $method;
 
 
 
-if(BASE_PASS === '/login') {
-    require_once 'php/views/login.php';
-} elseif(BASE_PASS === '/register') {
-    require_once 'php/views/register.php';
-} elseif(BASE_PASS === '/') {
-    require_once 'php/views/home.php';
-}
 
 ?>
