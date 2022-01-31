@@ -7,9 +7,12 @@ require_once SOURCE . 'parts/header.php';
 
 $path = str_replace('/', '', $_SERVER['REQUEST_URI']);
 
-path($path);
+$method = $_SERVER['REQUEST_METHOD'];
 
-function path($path) {
+path($path, $method);
+
+/*どのファイルを読み込むか*/
+function path($path, $method) {
     if($path === '') {
     $path = 'home';
 }
@@ -22,14 +25,13 @@ if(!file_exists($targetfile)) {
 } else {
 require_once $targetfile;
 }
+
+$fn = "\\controller\\{$path}\\{$method}";
+
+$fn();
 }
 
-
 require_once SOURCE . 'parts/footer.php';
-
-
-$method = $_SERVER['REQUEST_METHOD'];
-echo $method;
 
 
 

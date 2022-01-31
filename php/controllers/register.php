@@ -1,6 +1,8 @@
 <?php 
-
+function get() {
     require_once SOURCE . 'views/register.php';
+}
+
 
 
 
