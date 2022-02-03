@@ -2,12 +2,19 @@
 require_once 'config.php';
 
 
+// require_once SOURCE . 'db/user.query.php';
+
 // partsの読み込み
 require_once SOURCE . 'parts/header.php';
+
+if(isset($_SESSION['username'])) {
+    echo ('<h1>ようこそ' . $_SESSION['username'] . 'さん</h1>');
+}
 
 $path = str_replace('/', '', $_SERVER['REQUEST_URI']);
 
 $method = $_SERVER['REQUEST_METHOD'];
+echo $method;
 
 path($path, $method);
 
